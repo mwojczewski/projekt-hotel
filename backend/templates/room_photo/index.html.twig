@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RoomPhoto index{% endblock %}
+
+{% block body %}
+    <h1>RoomPhoto index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for room_photo in room_photos %}
+            <tr>
+                <td>{{ room_photo.id }}</td>
+                <td>{{ room_photo.name }}</td>
+                <td>
+                    <a href="{{ path('app_room_photo_show', {'id': room_photo.id}) }}">show</a>
+                    <a href="{{ path('app_room_photo_edit', {'id': room_photo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_room_photo_new') }}">Create new</a>
+{% endblock %}

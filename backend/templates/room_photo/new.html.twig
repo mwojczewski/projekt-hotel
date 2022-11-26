@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RoomPhoto{% endblock %}
+
+{% block body %}
+    <h1>Create new RoomPhoto</h1>
+
+    {{ include('room_photo/_form.html.twig') }}
+
+    <a href="{{ path('app_room_photo_index') }}">back to list</a>
+{% endblock %}
