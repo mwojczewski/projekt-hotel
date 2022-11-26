@@ -42,7 +42,7 @@ class ReservationRepository extends ServiceEntityRepository
     /**
      * @return Reservation[] Returns an array of Reservation objects
      */
-    public function findConflicts(?\DateTime $start = null, ?\DateTime $end = null, ?int $room_id = null): array
+    public function findConflicts(?\DateTimeImmutable $start = null, ?\DateTimeImmutable $end = null, ?int $room_id = null): array
     {
         return $this->createQueryBuilder('r')
             // ->where('r.starts_at BETWEEN :start AND :end')
