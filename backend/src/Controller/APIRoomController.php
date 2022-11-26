@@ -50,10 +50,11 @@ class APIRoomController extends AbstractController
     #[Route('/room/reservations/create', name: 'app_api_room_add_reservation', methods: ['POST'])]
     public function addReservation(ManagerRegistry $doctrine, ReservationRepository $reservationRepository = null, Request $request): Response
     {
-        $id = $request->request->get('room_id');
-        $starts_at = \DateTimeImmutable::createFromFormat("Y.m.d H:i:s", $request->request->get('starts_at') . " 13:00:00");
-        $ends_at = \DateTimeImmutable::createFromFormat("Y.m.d H:i:s", $request->request->get('ends_at') . " 11:00:00");
-        $paid = $request->request->get('paid') === 1;
+        $payload = json_decode($request->getContent(), true);
+        $id = (int) $payload['room_id'];
+        $starts_at = \DateTimeImmutable::createFromFormat("Y.m.d H:i:s", $payload['starts_at'] . " 13:00:00");
+        $ends_at = \DateTimeImmutable::createFromFormat("Y.m.d H:i:s", $payload['ends_at'] . " 11:00:00");
+        $paid = (int) $payload['paid'] === 1;
 
         if (!$id || !$starts_at || !$ends_at)
             return $this->json(['error' => 'data_not_found'], Response::HTTP_NOT_FOUND, ["Content-Type" => "application/json"]);
@@ -61,7 +62,7 @@ class APIRoomController extends AbstractController
         $room = $doctrine->getRepository(Room::class)->find($id);
 
         if (!$room) {
-            return $this->json(['error' => 'room_not_found'], Response::HTTP_NOT_FOUND, ["Content-Type" => "application/json"]);
+            return $this->json(['error' => 'room_not_found', 'payload' => $payload], Response::HTTP_NOT_FOUND, ["Content-Type" => "application/json"]);
         }
 
         // czy termin jest wolny?
