@@ -9,7 +9,7 @@
 - **/DOCS** - dokumentacja elementów projektu
 ## organizacja zadań
 
-- backend: @github/mwojczewski
-- frontend: @github/justynasadlak
-- database: @github/berton-boy
-- layout: @github/cruelfan
+- backend: @mwojczewski
+- frontend: @justynasadlak
+- database: @berton-boy
+- layout: @cruelfan
