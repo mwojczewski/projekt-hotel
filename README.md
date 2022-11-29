@@ -6,7 +6,7 @@
 - **/frontend** - kod źródłowy frontendu (angular?)
 - **/database** - projekt bazy danych (MySQL/MariaDB)
 - **/layout** - projekt graficzny strony
-
+- **/DOCS** - dokumentacja elementów projektu
 ## organizacja zadań
 
 - backend: @mwojczewski
