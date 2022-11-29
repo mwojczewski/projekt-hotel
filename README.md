@@ -1,13 +1,13 @@
 # projekt-hotel
 
-# struktura repozytorium
+## struktura repozytorium
 
 - **/backend** - kod źródłowy backendu (Symfony)
 - **/frontend** - kod źródłowy frontendu (angular?)
 - **/database** - projekt bazy danych (MySQL/MariaDB)
 - **/layout** - projekt graficzny strony
 
-# organizacja pracy
+## organizacja zadań
 
 - backend: @mwojczewski
 - frontend: @justynasadlak
