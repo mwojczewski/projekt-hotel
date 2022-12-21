@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row my-4">
+        <div *ngFor="let room of rooms" class="col-md-6 mb-4">
+            <div class="card" style="width: 500px">
+                <img [src]="room.mainPhoto" class="card-img-top" style="width: 100%;" alt="">
+
+                <div class="card-body">
+                    <h4 class="card-title">{{ room.name }}</h4>
+                    <p class="card-text">Numer pokoju: {{ room.room_no }}, piętro: {{ room.floor_no }}, powierzchnia: {{
+                        room.size }}m2, liczba łóżek: {{ room.beds }}, balkon: {{ room.balcony ? 'tak' : 'nie' }},
+                        zwierzęta: {{ room.pets_allowed ? 'tak' : 'nie' }}</p>
+                    <a [routerLink]="['/rooms/', room.id]" calss="btn btn-primary">Zobacz pokój</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
