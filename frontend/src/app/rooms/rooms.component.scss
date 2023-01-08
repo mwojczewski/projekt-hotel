@@ -1,0 +1,25 @@
+.search-title {
+    font-size: 3rem;
+}
+
+.search-form {
+    background: rgba(0, 0, 0, 0.5);
+
+    .btn-search {
+        background: #b78a62;
+        color: #fff;
+        height: 36px;
+        width: 132px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.font-white {
+    color: #fff;
+}
+
+.form-control {
+    height: 36px;
+}

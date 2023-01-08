@@ -56,15 +56,9 @@ export class RoomDetailsComponent implements OnInit {
     this.getRoomReservations();
 
     this.newReservationForm = this.fb.group({
-      email: [null, Validators.required],
-      numberOfPeople: [1, Validators.required],
-      options: [null, Validators.required],
       depart: [null, Validators.required],
       return: [null, Validators.required],
-      paid: false,
-      message: null,
     })
-
   }
 
   myFilter = (d: Date | null): boolean => {
@@ -83,8 +77,7 @@ export class RoomDetailsComponent implements OnInit {
           let data = {
             room_id: parseInt(this.roomId!),
             starts_at: moment(this.newReservationForm.controls['depart'].value!).format("YYYY.MM.DD"),
-            ends_at: moment(this.newReservationForm.controls['return'].value!).format("YYYY.MM.DD"),
-            paid: this.newReservationForm.controls['paid'].value
+            ends_at: moment(this.newReservationForm.controls['return'].value!).format("YYYY.MM.DD")
           }
           this.appService.createReservation(data).subscribe(resp => {
             this.getRoomReservations();
@@ -113,6 +106,7 @@ export class RoomDetailsComponent implements OnInit {
           this.router.navigate(['/404'])
         }
         this.roomDetails = response;
+        this.roomDetails.price = this.roomDetails.price / 100;
       }
     )
   }

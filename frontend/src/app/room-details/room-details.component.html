@@ -20,46 +20,23 @@
                 </a>
                 <h5>Szczegółowy opis pokoju</h5>
                 <p>{{ roomDetails.description }}</p>
-                <div>numer pokoju: {{ roomDetails.room_no }}</div>
-                <div>piętro: {{ roomDetails.floor_no }}</div>
-                <div>powierzchnia: {{ roomDetails.size }}m2</div>
-                <div>liczba łóżek: {{ roomDetails.beds }}</div>
-                <div>śniadanie: {{ roomDetails.breakfast ? 'tak' : 'nie' }}</div>
-                <div>balkon: {{ roomDetails.balcony ? 'tak' : 'nie' }}</div>
-                <div>zwierzęta: {{ roomDetails.pets_allowed ? 'tak' : 'nie' }}</div>
+                <span class="badge bg-info text-dark me-2">numer pokoju: {{ roomDetails.room_no }}</span>
+                <span class="badge bg-info text-dark me-2">piętro: {{ roomDetails.floor_no }}</span>
+                <span class="badge bg-info text-dark me-2">powierzchnia: {{ roomDetails.size }}m2</span>
+                <span class="badge bg-info text-dark me-2">liczba łóżek: {{ roomDetails.beds }}</span>
+                <span class="badge bg-info text-dark me-2">śniadanie: {{ roomDetails.breakfast ? 'tak' : 'nie' }}</span>
+                <span class="badge bg-info text-dark me-2">balkon: {{ roomDetails.balcony ? 'tak' : 'nie' }}</span>
+                <span class="badge bg-info text-dark me-2">zwierzęta: {{ roomDetails.pets_allowed ? 'tak' : 'nie'
+                    }}</span>
+                <span class="badge bg-info text-dark me-2">śniadanie: {{ roomDetails.breakfast ? 'tak' : 'nie' }}</span>
             </div>
         </div>
         <div class="col-4">
             <h5>{{ roomDetails.name }}</h5>
             <h3>{{ roomDetails.price | currency: 'PLN ' }}</h3>
+            <br>
             <form [formGroup]="newReservationForm">
-                <h5>Sprawdź dostępność</h5>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Adres Email*</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                        placeholder="name@example.com" formControlName="email" email="true">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Ilość osób*</label>
-                    <select class="form-control" id="exampleFormControlSelect1" formControlName="numberOfPeople">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Wybierz udogodnienia*</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2" formControlName="options">
-                        <option>Brak</option>
-                        <option>Zwierzęta</option>
-                        <option>Śniadanie</option>
-                        <option>Wszystkie dostępne opcje</option>
-                        <option>Dodatkowy klucz do pokoju</option>
-                    </select>
-                </div>
-                <br>
+                <h5>Zarezerwuj</h5>
                 <div *ngIf="dateError" style="color:red;">W tym terminie pokój nie jest juz dostępny</div>
                 <div class="form-group">
                     <p> Data zameldowania*</p>
@@ -80,17 +57,6 @@
                         <mat-datepicker #returnDate></mat-datepicker>
                     </mat-form-field>
                 </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Specjalne uwagi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        formControlName="message"></textarea>
-                </div>
-                <br>
-                <div class="form-group">
-                    <mat-checkbox formControlName="paid">Opłacono</mat-checkbox>
-                </div>
-
                 <br>
                 <div class="text-center text-md-left">
                     <button class="btn btn-primary" (click)="createReservation()"
@@ -98,9 +64,7 @@
                     <div *ngIf="successMsg" style="color:green;">Rezerwacja przebiegła pomyślnie</div>
                     <div *ngIf="errorMsg" style="color:red;">Coś poszło nie tak. Spróbuj jeszcze raz.</div>
                 </div>
-
             </form>
-
         </div>
     </div>
 </div>

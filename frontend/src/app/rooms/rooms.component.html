@@ -1,14 +1,43 @@
 <div class="container">
+    <div class="search-title">
+        Wyszukaj pokój
+    </div>
+    <div class="row search-form p-3 align-items-end">
+        <div class="col-12 col-md-5 mb-2">
+            <label for="exampleFormControlSelect2" class="font-white mb-2">Wybierz udogodnienia</label>
+            <ng-select [multiple]="true" [(ngModel)]="selectedOptions">
+                <ng-option *ngFor="let option of options" [value]="option.id">{{option.name}}</ng-option>
+            </ng-select>
+        </div>
+        <div class="form-group col-12 col-md-4 mb-2">
+            <label for="exampleFormControlSelect1" class="font-white mb-2">Liczba łóżek</label>
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Wpisz liczbę łóżek"
+                [(ngModel)]="beds">
+        </div>
+        <div class="text-center text-md-left mb-2 col-12 col-md-3 d-flex">
+            <button class="btn btn-search" (click)="onSearch()">Wyszukaj</button>
+        </div>
+    </div>
     <div class="row my-4">
-        <div *ngFor="let room of rooms" class="col-md-6 mb-4">
+        <div *ngFor="let room of filteredRooms" class="col-md-6 mb-4 d-flex justify-content-center">
             <div class="card" style="width: 500px">
                 <img [src]="room.mainPhoto" class="card-img-top" style="width: 100%;" alt="">
 
                 <div class="card-body">
                     <h4 class="card-title">{{ room.name }}</h4>
-                    <p class="card-text">Numer pokoju: {{ room.room_no }}, piętro: {{ room.floor_no }}, powierzchnia: {{
-                        room.size }}m2, liczba łóżek: {{ room.beds }}, balkon: {{ room.balcony ? 'tak' : 'nie' }},
-                        zwierzęta: {{ room.pets_allowed ? 'tak' : 'nie' }}</p>
+                    <p class="card-text">
+                        <span class="badge bg-info text-dark me-2">numer pokoju: {{ room.room_no }}</span>
+                        <span class="badge bg-info text-dark me-2">piętro: {{ room.floor_no }}</span>
+                        <span class="badge bg-info text-dark me-2">powierzchnia: {{ room.size }}m2</span>
+                        <span class="badge bg-info text-dark me-2">liczba łóżek: {{ room.beds }}</span>
+                        <span class="badge bg-info text-dark me-2">śniadanie: {{ room.breakfast ? 'tak' : 'nie'
+                            }}</span>
+                        <span class="badge bg-info text-dark me-2">balkon: {{ room.balcony ? 'tak' : 'nie' }}</span>
+                        <span class="badge bg-info text-dark me-2">zwierzęta: {{ room.pets_allowed ? 'tak' : 'nie'
+                            }}</span>
+                        <span class="badge bg-info text-dark me-2">śniadanie: {{ room.breakfast ? 'tak' : 'nie'
+                            }}</span>
+                    </p>
                     <a [routerLink]="['/rooms/', room.id]" calss="btn btn-primary">Zobacz pokój</a>
                 </div>
             </div>
