@@ -9,7 +9,7 @@
 - **/DOCS** - dokumentacja elementów projektu
 ## organizacja zadań
 
-- backend: @mwojczewski
-- frontend: @justynasadlak
-- database: @berton-boy
-- layout: @cruelfan
+- backend: @mwojczewski (Michał Wojczewski)
+- frontend: @justynasadlak (Justyna Sadlak)
+- database: @berton-boy (Bartłomiej Piętka)
+- layout: @cruelfan (Bartosz Pędzich)
